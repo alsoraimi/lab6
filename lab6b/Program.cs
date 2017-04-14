@@ -10,38 +10,52 @@ namespace lab6b
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a sentence to convert to PigLatin:");
+            Console.WriteLine("Enter a word to convert to PigLatin:");
             string sentence = Console.ReadLine();
-            var pigLatin = GetSentenceInPigLatin(sentence);
+            string pigLatin = ToPigLatin(sentence);
             Console.WriteLine(pigLatin);
-            Console.ReadLine();
+
+
 
 
         }
 
+        public static string ToPigLatin(string sentence)
 
-       public static string GetSentenceInPigLatin(string sentence)
         {
-            const string vowels = "AEIOUaeio";
-            List<string> newWords = new List<string>();
+            string FirstLetter;
+            string RestofWord;
+            string vowels = "aeiouAEIOU";
+            int currentLetter;
 
-            foreach (string word in sentence.Split(' '))
-            {
-                string firstLetter = word.Substring(0, 1);
-                string restOfWord = word.Substring(1, word.Length - 1);
-                int currentLetter = vowels.IndexOf(firstLetter);
 
-                if (currentLetter == -1)
+           
+            foreach (string word in sentence.Split())
                 {
-                    newWords.Add(restOfWord + firstLetter + "ay");
+                FirstLetter = sentence.Substring(0, 1);
+                RestofWord = sentence.Substring(1, sentence.Length - 1);
+                currentLetter = vowels.IndexOf(FirstLetter);
+
+                if (FirstLetter == vowels)
+
+                {
+                    sentence = sentence += "way";
+
                 }
+
                 else
                 {
-                    newWords.Add(word + "way");
+
+                    sentence = RestofWord + "ay";
                 }
-            }
-            return string.Join(" ", newWords);
+
+            }return sentence;
+
+
         }
+
+
+       
     }
 
 }
