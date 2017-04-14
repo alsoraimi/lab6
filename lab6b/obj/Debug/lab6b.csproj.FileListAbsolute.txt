@@ -1,0 +1,6 @@
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\bin\Debug\lab6b.exe.config
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\bin\Debug\lab6b.exe
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\bin\Debug\lab6b.pdb
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\obj\Debug\lab6b.csprojResolveAssemblyReference.cache
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\obj\Debug\lab6b.exe
+c:\users\abe\documents\visual studio 2015\Projects\lab6b\lab6b\obj\Debug\lab6b.pdb
