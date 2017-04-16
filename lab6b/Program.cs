@@ -14,18 +14,20 @@ namespace lab6b
             bool askToContinue = false;     //loop if user wants to continue using application
             do
             {
+                Console.WriteLine("Welcome to the Pig Latin Translator");
+                Console.WriteLine();
                 Console.WriteLine("Enter a word to convert to PigLatin:");
-                string sentence = Console.ReadLine();
+                string sentence = Console.ReadLine();            //gets user input of word
                 //string pigLatin = ToPigLatin(sentence);
                 Console.WriteLine(ToPigLatin(sentence));
 
-                Console.WriteLine("do you want to try again, ?" + " " + "(Y/N)"); // add user input if they want to try again
+                Console.WriteLine("Translate another word, ?" + " " + "(Y/N)"); // add user input if they want to try again
                 if (Console.ReadLine().ToUpper() == "Y")
                     askToContinue = true;
                 else
                 {
                     Console.WriteLine("thanks for trying!");
-                    return;
+                    break;
                 }
             } while (askToContinue);
         }
@@ -41,20 +43,22 @@ namespace lab6b
                     sentence = sentence += "way";
                 
                 }
-            else { 
+            else {
 
-            string temp;
-                
+                string temp;               
                 for (int i = 1; i < sentence.Length; i++)
                 {
                     if (sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i' || sentence[i] == 'o' || sentence[i] == 'u')
                     {
+                        
                         temp = sentence.Substring(0, i);
                         sentence = sentence.Remove(0, i);
-                        sentence = sentence += temp;
+                        sentence += temp;
+                        
                         
 
                     }
+               
 
                 }
             }return sentence;
