@@ -18,8 +18,7 @@ namespace lab6b
             {
                 Console.WriteLine("Welcome to the Pig Latin Translator");
                 Console.WriteLine();
-                Console.WriteLine("Enter a word to convert to PigLatin:");
-                string sentence = Console.ReadLine().ToLower().Trim();            //gets user input of word
+                string sentence = GetValidInput();            //gets user input of word
                 Console.WriteLine(ToPigLatin(sentence));
 
                 Console.WriteLine("Translate another word, ?" + " " + "(Y/N)"); // add user input if they want to try again
@@ -59,6 +58,25 @@ namespace lab6b
             }
             return sentence;
 
+        }
+
+        public static string GetValidInput()
+
+        { while (true)
+            {
+                Console.WriteLine("Enter a word to convert to PigLatin:");
+                string sentence = Console.ReadLine().ToLower().Trim();
+
+                if (sentence.All(c => Char.IsLetter(c) || c == ' ') && !string.IsNullOrWhiteSpace(sentence))
+                {
+                    return sentence;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR, ENTER A VALID SENTENCE");
+                    
+                }
+            }
         }
 
 
