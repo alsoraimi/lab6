@@ -19,7 +19,8 @@ namespace lab6b
                 Console.WriteLine("Welcome to the Pig Latin Translator");
                 Console.WriteLine();
                 string sentence = GetValidInput();            //gets user input of word
-                Console.WriteLine(ToPigLatin(sentence));
+                string[] words = SplitIntoWords(sentence);
+                ToPigLatin(words);
 
                 Console.WriteLine("Translate another word, ?" + " " + "(Y/N)"); // add user input if they want to try again
                 if (Console.ReadLine().ToUpper() == "Y")
@@ -32,31 +33,32 @@ namespace lab6b
             } while (AskToContinue);
         }
 
-        public static string ToPigLatin(string sentence)
+        public static void ToPigLatin(string[] words)
 
         {
-            if (sentence[0] == 'a' || sentence[0] == 'e' || sentence[0] == 'i' || sentence[0] == 'o' || sentence[0] == 'u')
+            char[] vowels = new char[5] { 'a', 'e', 'i', 'o', 'u' };
+            foreach (string item in words)
             {
-                sentence = sentence += "way";
-            }
-            else
-            {
-
-                string startingConsonants;      //changed temp to startingConsonants for meaningful name
-                for (int i = 1; i < sentence.Length; i++)
+                if (item.IndexOfAny(vowels) == 0)
                 {
-                    if (sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i' || sentence[i] == 'o' || sentence[i] == 'u')
-                    {
-
-                        startingConsonants = sentence.Substring(0, i);   //identifies begin of string before consonants
-                        sentence = sentence.Remove(0, i);  //removes starting consonants from string
-                        sentence += startingConsonants;     // adds starting consonats to end of sentence
-                    }
-
+                    Console.Write(item + "way ");
                 }
-                sentence += "ay";     //adds ay at the end of string
+                else if (item.IndexOfAny(vowels) == -1)
+                {
+                    Console.Write(item + "ay ");
+                }
+                else
+                {
+                    //Creates a substring starting at index 0 to the length of the index of the first vowel
+                    string starting = item.Substring(0, item.IndexOfAny(vowels));
+
+                    //Creates a substring at index of the first vowel to the end of the word
+                    string ending = item.Substring(item.IndexOfAny(vowels));
+                    Console.Write(ending + starting + "ay ");
+                }
             }
-            return sentence;
+            Console.WriteLine("\n");
+
 
         }
 
@@ -77,6 +79,13 @@ namespace lab6b
                     
                 }
             }
+        }
+
+        public static string[] SplitIntoWords(string input)
+        {
+            //Splits sentence into words array
+            string[] wordList = input.Split(' ');
+            return wordList;
         }
 
 
