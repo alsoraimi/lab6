@@ -13,7 +13,7 @@ namespace lab6b
         static void Main(string[] args)
         {
 
-            bool AskToContinue = false;     //loop if user wants to continue using application
+            bool loop = true;     //loop if user wants to continue using application
             do
             {
                 Console.WriteLine("Welcome to the Pig Latin Translator");
@@ -22,15 +22,12 @@ namespace lab6b
                 string[] words = SplitIntoWords(sentence);
                 ToPigLatin(words);
 
-                Console.WriteLine("Translate another word, ?" + " " + "(Y/N)"); // add user input if they want to try again
-                if (Console.ReadLine().ToUpper() == "Y")
-                    AskToContinue = true;
-                else
+           if (!ContinueLoop())
                 {
-                    Console.WriteLine("thanks for trying!");
-                    break;
+                    loop = false;
                 }
-            } while (AskToContinue);
+
+            } while (loop);
         }
 
         public static void ToPigLatin(string[] words)
@@ -64,7 +61,8 @@ namespace lab6b
 
         public static string GetValidInput()
 
-        { while (true)
+        {
+            while (true)
             {
                 Console.WriteLine("Enter a word to convert to PigLatin:");
                 string sentence = Console.ReadLine().ToLower().Trim();
@@ -76,7 +74,7 @@ namespace lab6b
                 else
                 {
                     Console.WriteLine("ERROR, ENTER A VALID SENTENCE");
-                    
+
                 }
             }
         }
@@ -88,8 +86,33 @@ namespace lab6b
             return wordList;
         }
 
+        public static bool ContinueLoop()
+        {
+            while (true)
+            {
+                Console.WriteLine("Translate another word, ? (Y/N)"); // add user input if they want to try again
+                string input = Console.ReadLine().ToUpper();
+                if (input == "Y")
+                {
+                    Console.WriteLine();
+                    return true;
+                }
+
+                else if (input == "N")
+                {
+                    Console.WriteLine("thanks for trying!");
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR, ENTER Y OR N");
+
+                }
+            }
 
 
+
+
+        }
     }
-
 }
