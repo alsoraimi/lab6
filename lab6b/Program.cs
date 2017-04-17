@@ -60,7 +60,7 @@ namespace lab6b
                     }
                
 
-                }
+                }sentence += "ay";
             }return sentence;
 
 
